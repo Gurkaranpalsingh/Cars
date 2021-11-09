@@ -1,0 +1,37 @@
+<br/><br/>
+<h1>Cars</h1>
+<br/><br/>
+
+
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">Model</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">License Plate</th>
+      <th scope="col">Year</th>
+      <th scope="col">Door Count</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">Manufacturer</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @cars.each do |car| %>
+      <tr>
+        <td><%= link_to car.model, car %></td>
+        <td><%= car.description %></td>
+        <td><%= car.quantity %></td>
+        <td><%= number_to_currency car.price %></td>
+        <td><%= car.licenseplate %></td>
+        <td><%= car.year %></td>
+        <td><%= car.doorCount %></td>
+        <td><%= car.mileage %></td>
+        <td><%= car.manufacturer.name %></td>
+      </tr>
+  </tbody>
+  <% end %>
+</table>
+<br>

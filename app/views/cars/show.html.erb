@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header"><h2><%= @car.model %></h2></div>
+  <div class="card-body">
+  <ul>
+    <%# <li><span class="font-weight-bold">Image: </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= image_tag @car.image.medium.url %></span></li> %>
+    <li><span class="font-weight-bold">Description: </span><span><%= @car.description %></span></li>
+    <li><span class="font-weight-bold">Quantity: </span><span><%= @car.quantity %></span></li>
+    <li><span class="font-weight-bold">License Plate: </span><span><%= number_to_currency @car.price %></span></li>
+    <li><span class="font-weight-bold">Year: </span><span><%= @car.year %></span></li>
+    <li><span class="font-weight-bold">Door Count: </span><span><%= @car.doorCount %></span></li>
+    <li><span class="font-weight-bold">Mileage: </span><span><%= @car.mileage %></span></li>
+    <li><span class="font-weight-bold">Manufacturer: </span><span><%= @car.manufacturer.name %></span></li>
+  </ul>
+  </div>
+</div>
