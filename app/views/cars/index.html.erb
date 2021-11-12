@@ -1,44 +1,16 @@
-<br/><br/>
-<h1>Cars</h1>
-<br/><br/>
-<br/>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Model</th>
-      <th scope="col">Description</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-      <th scope="col">License Plate</th>
-      <th scope="col">Year</th>
-      <th scope="col">Door Count</th>
-      <th scope="col">Mileage</th>
-      <th scope="col">Manufacturer</th>
-    </tr>
-  </thead>
-  <tbody>
-
-
-  <% @cars.each do |car| %>
-      <tr>
-        <td><%= link_to car.model, car %></td>
-        <td><%= car.description %></td>
-        <td><%= car.quantity %></td>
-        <td><%= number_to_currency car.price %></td>
-        <td><%= car.licenseplate %></td>
-        <td><%= car.year %></td>
-        <td><%= car.doorCount %></td>
-        <td><%= car.mileage %></td>
-        <td><%= car.manufacturer.name %></td>
-        <% if car.image.present? %>
-        <div class = "card-image" >
-        <figure class = 'image'>
-        <%= image_tag car.image %>
-        </figure>
-        </div>
-        <% end %>
-      </tr>
-  </tbody>
+<h1 style="color:blue;">All the Car we have to offer!</h1>
+<div class="row">
+ <% @cars.each do |car| %>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+      <%= image_tag car.image , width: "100%" , height: "width",alt:"Logo"%>
+        <h3 class="card-title"><%= link_to car.model, car %></h3>
+        <h4 class="card-text"><span style="font-weight:bold" >Made By:</span> <%=link_to car.manufacturer.name, car.manufacturer%></h4>
+        <h4 class="card-text"><span style="font-weight:bold" >Feature: </span><%= car.description %></h4>
+        <a href="#" class="btn btn-primary">Add to Cart</a>
+      </div>
+    </div>
+  </div>
   <% end %>
-</table>
-<br>
+</div>
