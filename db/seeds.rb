@@ -24,6 +24,11 @@ Manufacturer.destroy_all
       mileage: Faker::Vehicle.mileage(min: 50_000),
       manufacturer: manufacturer
     )
+    query = URI.encode_www_form_component([cars.model, manufacturer.name].join(','))
+    download_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+    cars.image.attach(io: download_image, filename: "m-#{[cars.model, manufacturer.name].join('-')}.jpg")
+
+    sleep(1)
   end
 end
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -61,3 +61,5 @@ gem 'activeadmin'
 # gem "kaminari", "~> 0.13.0"
 # Plus integrations with:
 gem 'devise'
+
+gem 'image_processing'

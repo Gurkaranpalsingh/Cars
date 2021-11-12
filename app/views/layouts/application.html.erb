@@ -12,6 +12,29 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-lg">
+    <ul class="list-group list-group-horizontal">
+   <li class="list-group-item"><%= link_to "Manufacturers", manufacturers_url%></li>
+      <li class="list-group-item"><%= link_to "Cars", cars_url%></li>
+    </ul>
+          <%= form_tag(search_page_path, :method => "get",
+        class: 'navbar-form navbar-left') do %>
+      <div class="input-group mb-3">
+        <%= select_tag 'category', options_from_collection_for_select(Manufacturer.all, :id,:name), include_blank: "Manufacturer", class: "select is-info" %>
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+        <div class="input-group-btn">
+          <%= button_tag "Search", :class => 'btn btn-dark',:name => nil%>
+        </div>
+      </div>
+      <div>
+
+    <% end %>
+    </div>
+  </nav>
+
+
     <%= yield %>
+
   </body>
 </html>

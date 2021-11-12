@@ -4,7 +4,17 @@ ActiveAdmin.register Car do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :model, :description, :quantity, :price, :licenseplate, :year, :doorCount, :mileage, :manufacturer_id
+  permit_params :model, :description, :quantity, :price, :licenseplate, :year, :doorCount, :mileage, :manufacturer_id,
+                :image
+
+  form do |f|
+    f.semantic_errors
+    f.inputs
+    f.inputs do
+      f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image) : ''
+    end
+    f.actions
+  end
   #
   # or
   #

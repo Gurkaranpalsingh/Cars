@@ -30,6 +30,13 @@
         <td><%= car.doorCount %></td>
         <td><%= car.mileage %></td>
         <td><%= car.manufacturer.name %></td>
+        <% if car.image.present? %>
+        <div class = "card-image" >
+        <figure class = 'image'>
+        <%= image_tag car.image %>
+        </figure>
+        </div>
+        <% end %>
       </tr>
   </tbody>
   <% end %>

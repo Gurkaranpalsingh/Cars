@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'car_search/index' => 'car_search#index', :as => 'search_page'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  root to: 'manufacturers#index'
   # get 'cars/index'
   # get 'cars/show'
   # get 'manufacturers/index'

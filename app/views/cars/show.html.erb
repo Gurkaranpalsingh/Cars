@@ -2,7 +2,7 @@
   <div class="card-header"><h2><%= @car.model %></h2></div>
   <div class="card-body">
   <ul>
-    <%# <li><span class="font-weight-bold">Image: </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= image_tag @car.image.medium.url %></span></li> %>
+     <li><span class="font-weight-bold">Image: </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= image_tag @car.image %></span></li>
     <li><span class="font-weight-bold">Description: </span><span><%= @car.description %></span></li>
     <li><span class="font-weight-bold">Quantity: </span><span><%= @car.quantity %></span></li>
     <li><span class="font-weight-bold">License Plate: </span><span><%= number_to_currency @car.price %></span></li>
