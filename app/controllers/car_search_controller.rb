@@ -1,12 +1,13 @@
 class CarSearchController < ApplicationController
   def index
-    if params[:search].blank? || params[:category].blank?
+    if params[:search].blank? && params[:category].blank? # Search and category blank
       redirect_to(root_path, alert: 'Emplty filed!') and return
-    elsif params[:search].blank? && !params[:category].blank?
+
+    elsif params[:search].blank? && !params[:category].blank? # Search is blank
       parameter = params[:category]
-      car = Car.includes(:manufacturer).all.where(id: parameter)
+      car = Manufacturer.find(parameter).car
       @resultSet = car
-    elsif !params[:search].blank? && params[:category].blank?
+    elsif !params[:search].blank? && params[:category].blank? # category is blank
       parameter = params[:search].downcase
       @resultSet = Car.all.where('lower(model) like ?', "%#{parameter}%")
     else
