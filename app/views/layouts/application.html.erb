@@ -33,7 +33,24 @@
     </div>
   </nav>
 
-
+<%# # <%= debug cart %>
+   <%if flash[:notice]%>
+   <p><%= flash[:notice]%>
+   <%end%>
+    <%= link_to image_tag("cart.png", width:60),root_path%>
+      <ul>
+        <li>Cart <% if cart.present?%>
+              <sup><%= cart.size %></sup>
+            <ul>
+              <% cart.each do |car|%>
+            <li>
+              <%= car.model%><%= link_to 'DELETE', cart_path(car), method: :delete %>
+            </li>
+          <%end%>
+          </ul>
+        <%end%>
+      </li>
+ </ul>
     <%= yield %>
 
   </body>

@@ -6,15 +6,15 @@ class CarSearchController < ApplicationController
     elsif params[:search].blank? && !params[:category].blank? # Search is blank
       parameter = params[:category]
       car = Manufacturer.find(parameter).car
-      @resultSet = car
+      @result_set = car
     elsif !params[:search].blank? && params[:category].blank? # category is blank
       parameter = params[:search].downcase
-      @resultSet = Car.all.where('lower(model) like ?', "%#{parameter}%")
+      @result_set = Car.all.where('lower(model) like ?', "%#{parameter}%")
     else
       parameter = params[:search].downcase
       category = params[:category]
       car = Car.includes(:manufacturer).all.where(manufacturer: category)
-      @resultSet = car.where('lower(model) like ?', "%#{parameter}%")
+      @result_set = car.where('lower(model) like ?', "%#{parameter}%")
     end
   end
 end
