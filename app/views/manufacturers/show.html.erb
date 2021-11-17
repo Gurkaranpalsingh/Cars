@@ -1,15 +1,6 @@
 <h1 style="color:blue;">All the Car Manufactured by <%= @manufacturer%></h1>
 <div class="row">
  <% @cars.each do |car| %>
-  <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-      <%= image_tag car.image , width: "100%" , height: "width",alt:"Logo"%>
-        <h3 class="card-title"><%= link_to car.model, car %></h3>
-        <h4 class="card-text"><span style="font-weight:bold" >Feature: </span><%= car.description %></h4>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
-      </div>
-    </div>
-  </div>
+ <%= render :partial => './cars/car', locals: { car: car } %>
   <% end %>
 </div>
