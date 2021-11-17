@@ -37,7 +37,7 @@
    <%if flash[:notice]%>
    <p><%= flash[:notice]%>
    <%end%>
-    <%= link_to image_tag("cart.png", width:60),root_path%>
+    <%= link_to image_tag("cart.jpg", width:60),root_path%>
       <ul>
         <li>Cart <% if cart.present?%>
               <sup><%= cart.size %></sup>
@@ -52,6 +52,28 @@
       </li>
  </ul>
     <%= yield %>
-
+<footer>
+      <details>
+        <summary>
+            Cart
+            <% if cart.present? %>
+              <sup><%= cart.size %></sup>
+            <% end %>
+        </summary>
+        <% if cart.present? %>
+          <ul>
+            <% cart.each do |car| %>
+              <li>
+                <%= car.model %> <%= link_to '❌', cart_path(car), method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No items in your cart.</p>
+        <% end %>
+      </details>
+      <hr>
+      <p>
+    </footer>
   </body>
 </html>
