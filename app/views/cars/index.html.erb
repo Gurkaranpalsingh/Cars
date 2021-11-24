@@ -1,4 +1,7 @@
+
 <h1 style="color:blue;">Buy Cars, Become Lazy</h1>
+
+<%= paginate @cars %>
 <div class="row">
 <% @cars.each do |car| %>
 <%= render :partial => 'car', locals: { car: car } %>

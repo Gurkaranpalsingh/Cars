@@ -2,6 +2,8 @@
   <div class="card-header"><h2><%= @car.model %></h2></div>
   <div class="card-body">
   <ul>
+
+<p id="notice"><%= notice %></p>
     <%= image_tag @car.image , width: '400', height: '400'%></span>
     <li><span style="font-weight:bold" >Feature: </span><span><%= @car.description %></span></li>
     <li><span style="font-weight:bold">Quantity: </span><span><%= @car.quantity %></span></li>

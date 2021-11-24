@@ -6,7 +6,7 @@ class CartController < ApplicationController
     session[:shopping_cart] << id # push to an array
     car = Car.find(id)
     flash[:notice] = "➕ #{car.model} added to cart"
-    redirect_to root_path
+    redirect_to request.referrer
   end
 
   def destroy
@@ -14,6 +14,6 @@ class CartController < ApplicationController
     session[:shopping_cart].delete(id)
     car = Car.find(id)
     flash[:notice] = "➕ #{car.model} removed to cart"
-    redirect_to root_path
+    redirect_to request.referrer
   end
 end
