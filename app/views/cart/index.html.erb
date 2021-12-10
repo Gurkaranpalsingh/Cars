@@ -1,0 +1,72 @@
+<h1><%=@user %></h1>
+<%if @items.count != 0 %>
+<figure class="text-center m-0 h1">
+  <blockquote class="blockquote">
+    <p>Shopping Cart 🛒</p>
+  </blockquote>
+</figure>
+
+<table class="table table-striped m-5" style="max-width: 90%;">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+<%# <th scope="col">Quantity</th> %>
+       <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @items.each do |item| %>
+    <tr>
+      <td scope="row"><%= item.model %></td>
+      <td><%= item.description %></td>
+      <td><%=  number_to_currency item.price %></td>
+      <%# <%= simple_form_for @cart, html: {multipart: true} do |f| %>
+     <%# <td> <%= f.input_field :quantity collection: Car::QUANTITY, prompt: "Select quantity" %>
+    <td class="btn btn-primary m-1 p-1"><%= button_to cart_path(item), method: :delete do %>
+     Delete<% end %><td>
+    </tr>
+     <% @subtotal = @subtotal + item.price  %>
+    <% end%>
+  </tbody>
+
+</table>
+
+<table class="table table-striped m-5" style="max-width: 90%;">
+  <thead>
+    <tr>
+      <th scope="col">Subtotal</th>
+      <th scope="col">GST</th>
+      <th scope="col">PST</th>
+       <th scope="col">HST</th>
+         <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+      <td scope="row"><%=number_to_currency @subtotal %></td>
+      <td><%= number_to_currency (@subtotal * @Gst_in_percent)/100 %></td>
+      <td><%=  number_to_currency (@subtotal * @Pst_in_percent)/100  %></td>
+      <td><%=  number_to_currency (@subtotal * @Hst_in_percent)/100  %></td>
+      <td><%=number_to_currency (@subtotal * @Hst_in_percent)/100 + (@subtotal * @Gst_in_percent)/100 +(@subtotal * @Pst_in_percent)/100 + @subtotal %></td>
+
+    </tr>
+      </tbody>
+
+</table>
+
+<%# <h4 class=" text-center">The subTotal is - <span style="color:blue"><%=number_to_currency @subtotal</span></h4 %>
+<%# <h4 class="text-center">The GST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Gst_in_percent)/100 %></span></h4>
+<%# <h4 class="text-center">The PST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Pst_in_percent)/100 %></span></h4>
+<%# <h4 class="text-center">The HST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Hst_in_percent)/100 %></span></h4>
+<%# <h4 class="text-center">The Total is - <span style="color:blue"><%=number_to_currency (@subtotal * @Hst_in_percent)/100 + (@subtotal * @Gst_in_percent)/100 +(@subtotal * @Pst_in_percent)/100 + @subtotal%></span></p>
+<%else %>
+  <h3 class="text-center m-5 ">
+  No Item is Selected !
+</h3>
+
+<%end%>
+
+
+

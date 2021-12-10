@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Car.destroy_all
 Manufacturer.destroy_all
-
+Province.destroy_all
 10.times do
   manufacturer = Manufacturer.create(
     name: Faker::Vehicle.manufacture
@@ -31,4 +31,18 @@ Manufacturer.destroy_all
     sleep(1)
   end
 end
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Province.create({ name: 'Manitoba', GST: '5', PST: '7', HST: '0' })
+Province.create({ name: 'Alberta', GST: '5', PST: '0', HST: '0' })
+Province.create({ name: 'British Columbia', GST: '5', PST: '7', HST: '0' })
+Province.create({ name: 'New Brunswick', GST: '0', PST: '0', HST: '15' })
+Province.create({ name: 'New Foundland and Labrador', GST: '0', PST: '0', HST: '15' })
+Province.create({ name: 'NorthWest Territories', GST: '5', PST: '0', HST: '0' })
+Province.create({ name: 'NovaScotia', GST: '0', PST: '0', HST: '15' })
+Province.create({ name: 'Nunavut', GST: '5', PST: '0', HST: '0' })
+Province.create({ name: 'Ontario', GST: '0', PST: '0', HST: '13' })
+Province.create({ name: 'Prince Edward Island', GST: '0', PST: '0', HST: '15' })
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end

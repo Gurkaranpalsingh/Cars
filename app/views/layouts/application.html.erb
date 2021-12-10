@@ -10,7 +10,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
 
 <p class="navbar-text float-right">
@@ -41,60 +40,39 @@
           <%= button_tag "Search", :class => 'btn btn-dark',:name => nil%>
         </div>
       </div>
-      <div>
+
 
     <% end %>
     </div>
   </nav>
 
-<%# # <%= debug cart %>
-   <%if flash[:notice]%>
-   <p><%= flash[:notice]%>
-   <%end%>
-    <%= link_to image_tag("cart.jpg", width:60),root_path%>
-      <ul>
-        <li>Cart <% if cart.present?%>
-              <sup><%= cart.size %></sup>
-            <ul>
-              <% cart.each do |car|%>
-            <li>
-              <%= car.model%><%= link_to 'DELETE', cart_path(car), method: :delete %>
-            </li>
-          <%end%>
-          </ul>
-        <%end%>
-      </li>
- </ul>
 
- <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+
+
     <%= yield %>
-<footer>
-      <details>
+<%# <footer> %>
+      <%# <details>
         <summary>
             Cart
             <% if cart.present? %>
-              <sup><%= cart.size %></sup>
-            <% end %>
-        </summary>
-        <% if cart.present? %>
-          <ul>
+              <%# <sup><%= cart.size</sup> %>
+            <%# <% end %>
+        <%# </summary> %> %> %>
+        <%# <% if cart.present? %> %>
+          <%# <ul>
             <% cart.each do |car| %>
-              <li>
-                <%= car.model %> <%= link_to '❌', cart_path(car), method: :delete %>
-              </li>
+              <%# <li>
+                <%# <%= car.model %>
+                <%# <%= link_to '❌', cart_path(car), method: :delete %>  %>
+              <%# </li>
             <% end %>
-          </ul>
+          <%# </ul>
         <% else %>
-          <p>No items in your cart.</p>
-        <% end %>
-      </details>
+          <%# <p>No items in your cart.</p> %>
+        <%# <% end %>
+      <%# </details>
       <hr>
       <p>
-    </footer>
+    </footer> %> %> %> %> %> %>
   </body>
-</html>
+</html> %>

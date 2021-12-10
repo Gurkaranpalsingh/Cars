@@ -1,3 +1,29 @@
+<%# # <%= debug cart %>
+
+ <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+   <%if flash[:notice]%>
+   <p><%= flash[:notice]%>
+   <%end%>
+    <%= link_to image_tag("cart.jpg", width:60),cart_index_path%>
+      <ul>
+        <li>Cart <% if cart.present?%>
+              <sup><%= cart.size %></sup>
+            <ul>
+              <% cart.each do |car|%>
+            <li>
+              <%= car.model%><%= link_to 'DELETE', cart_path(car), method: :delete %>
+            </li>
+          <%end%>
+          </ul>
+        <%end%>
+      </li>
+ </ul>
 
 <h1 style="color:blue;">Buy Cars, Become Lazy</h1>
 
