@@ -22,6 +22,7 @@
       <td scope="row"><%= item.model %></td>
       <td><%= item.description %></td>
       <td><%=  number_to_currency item.price %></td>
+         <td><%=   item.quantity %></td>
       <%# <%= simple_form_for @cart, html: {multipart: true} do |f| %>
      <%# <td> <%= f.input_field :quantity collection: Car::QUANTITY, prompt: "Select quantity" %>
     <td class="btn btn-primary m-1 p-1"><%= button_to cart_path(item), method: :delete do %>
@@ -56,15 +57,20 @@
 
 </table>
 
+<%= form_with url: checkout_create_path, remote: true do %>
+      <%= hidden_field_tag(:cart, @items)%>
+      <%= button_tag "Checkout" %>
+<% end %>
+
 <%# <h4 class=" text-center">The subTotal is - <span style="color:blue"><%=number_to_currency @subtotal</span></h4 %>
 <%# <h4 class="text-center">The GST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Gst_in_percent)/100 %></span></h4>
 <%# <h4 class="text-center">The PST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Pst_in_percent)/100 %></span></h4>
 <%# <h4 class="text-center">The HST is - <span style="color:blue"><%=number_to_currency (@subtotal * @Hst_in_percent)/100 %></span></h4>
 <%# <h4 class="text-center">The Total is - <span style="color:blue"><%=number_to_currency (@subtotal * @Hst_in_percent)/100 + (@subtotal * @Gst_in_percent)/100 +(@subtotal * @Pst_in_percent)/100 + @subtotal%></span></p>
 <%else %>
-  <h3 class="text-center m-5 ">
-  No Item is Selected !
-</h3>
+    <p class="text-center">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
 
 <%end%>
 

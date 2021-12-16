@@ -1,15 +1,17 @@
-
-  <div class="col-sm-3">
+ <div class="col-sm-3">
     <div class="card">
       <div class="card-body">
-      <%= image_tag car.image , width: "100%" , height: "width",alt:"Logo"%>
+      <%= image_tag car.image , width: "200" , height: "200",alt:"Logo"%>
         <h3 class="card-title"><%= link_to car.model, car %></h3>
         <h4 class="card-text"><span style="font-weight:bold" >Made By:</span> <%=link_to car.manufacturer.name, car.manufacturer%></h4>
         <h4 class="card-text"><span style="font-weight:bold" >Feature: </span><%= car.description %></h4>
 <%# <%= form_with model: car do |f|%>
 <%# <%= f.number_field :quantity, value: item.quantity %>
-          <%= form_with url: cart_index_path, method: :post do %>
-        <%= hidden_field_tag(:id, car.id) %>
+          <%= form_with url: cart_index_path,remote: true, method: :post do |f| %>
+      <%= hidden_field_tag(:id, car.id) %>
+        <%= hidden_field_tag(:price, car.price) %>
+         <%= f.number_field :quantitys, in: 1.0..20.0, step: 1, :value => 1  %>
+   <%# <%= number_field_tag 'car[][quantity]', {}, id: "car_id" + product.id.to_s %>
         <%= button_tag 'Add to Cart' %>
         <% end %>
 

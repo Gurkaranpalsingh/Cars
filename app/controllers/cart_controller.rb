@@ -18,10 +18,12 @@ class CartController < ApplicationController
   end
 
   def index
+    @order_items = current_order.order_items
     @items = Car.find(session[:shopping_cart])
     @subtotal = 0
     @Gst_in_percent = current_user.province.GST
     @Pst_in_percent = current_user.province.PST
     @Hst_in_percent = current_user.province.HST
+    # @abc = params[:quantitys]kr
   end
 end

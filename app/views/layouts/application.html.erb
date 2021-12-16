@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Cars</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,25 +12,33 @@
   </head>
   <body>
 
-<p class="navbar-text float-right">
+<div class="navbar-text float-right">
 <% if user_signed_in? %>
+
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+
+
 <% end %>
-</p>
+ </div>
+
 
 
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-lg">
-    <ul class="list-group list-group-horizontal">
-   <li class="list-group-item"><%= link_to "Manufacturers", manufacturers_url%></li>
-      <li class="list-group-item"><%= link_to "Cars", cars_url%></li>
-    </ul>
+                  <ul class="list-group list-group-horizontal">
+                  <li class="list-group-item"><%= link_to "Manufacturers", manufacturers_url%></li>
+                  <li class="list-group-item"><%= link_to "Cars", cars_url%></li>
+                  <li class="list-group-item">  <%= link_to 'About Us', permalink_path('about_us') %></li>
+                  <%# <li class="list-group-item"> <%= link_to 'Contact Us', permalink_path('contact_us') %>
+                  </ul>
           <%= form_tag(search_page_path, :method => "get",
         class: 'navbar-form navbar-left') do %>
       <div class="input-group mb-3">
@@ -45,9 +53,6 @@
     <% end %>
     </div>
   </nav>
-
-
-
 
     <%= yield %>
 <%# <footer> %>
@@ -73,6 +78,6 @@
       <%# </details>
       <hr>
       <p>
-    </footer> %> %> %> %> %> %>
+    </footer> %>
   </body>
-</html> %>
+</html>
